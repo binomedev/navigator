@@ -2,9 +2,9 @@
 
 namespace Binomendev\Navigator\Tests;
 
+use Binomendev\Navigator\NavigatorServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Binomendev\Navigator\NavigatorServiceProvider;
 
 class TestCase extends Orchestra
 {

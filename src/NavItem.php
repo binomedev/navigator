@@ -3,7 +3,6 @@
 
 namespace Binomedev\Navigator;
 
-
 use Closure;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Traits\Macroable;
@@ -51,7 +50,7 @@ class NavItem implements Arrayable
     public function hasAnyActiveChild(): bool
     {
         // Check if any child is active
-        if (!$this->hasChildren()) {
+        if (! $this->hasChildren()) {
             return false;
         }
 
@@ -66,7 +65,7 @@ class NavItem implements Arrayable
 
     public function hasChildren(): bool
     {
-        return !empty($this->children);
+        return ! empty($this->children);
     }
 
     /**
@@ -85,6 +84,7 @@ class NavItem implements Arrayable
     {
         $instance = new static($name, route($route, $params));
         $instance->routeName = $route;
+
         return $instance;
     }
 
@@ -92,23 +92,26 @@ class NavItem implements Arrayable
     {
         $item = new self(null);
         $item->asDivider();
+
         return $item;
     }
 
     public function asDivider(): NavItem
     {
         $this->isDivider = true;
+
         return $this;
     }
 
     public function hasIcon(): bool
     {
-        return !is_null($this->icon);
+        return ! is_null($this->icon);
     }
 
     public function setVisible($state = true): NavItem
     {
         $this->isVisible = $state;
+
         return $this;
     }
 
@@ -126,13 +129,15 @@ class NavItem implements Arrayable
     {
         if (is_array($items)) {
             $this->children = array_merge($this->children, $items);
+
             return $this;
         }
 
-        if($items instanceof Closure){
+        if ($items instanceof Closure) {
             $this->add(
                 (array) $items(request())
             );
+
             return $this;
         }
 
@@ -197,6 +202,7 @@ class NavItem implements Arrayable
         }
 
         $this->icon = $icon;
+
         return $this;
     }
 

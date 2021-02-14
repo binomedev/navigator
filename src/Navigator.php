@@ -2,7 +2,6 @@
 
 namespace Binomendev\Navigator;
 
-
 use Binomedev\Navigator\NavItem;
 use Illuminate\Support\Traits\Macroable;
 
@@ -22,15 +21,16 @@ class Navigator
      */
     public function menu(string $name, $item): Navigator
     {
-        if(is_array($item)){
+        if (is_array($item)) {
             $menus[$name] = $item;
+
             return $this;
         }
 
         $menus[$name][] = $item;
+
         return $this;
     }
-
 
     /**
      * @param string $name
@@ -75,7 +75,7 @@ class Navigator
      */
     public function get(string $name, $default = []): array
     {
-        if($this->has($name)){
+        if ($this->has($name)) {
             return $this->menus[$name];
         }
 
