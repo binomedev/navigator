@@ -52,7 +52,7 @@ class NavItem implements Arrayable, \IteratorAggregate
     public function hasAnyActiveChild(): bool
     {
         // Check if any child is active
-        if (!$this->hasChildren()) {
+        if (! $this->hasChildren()) {
             return false;
         }
 
@@ -67,7 +67,7 @@ class NavItem implements Arrayable, \IteratorAggregate
 
     public function hasChildren(): bool
     {
-        return !empty($this->children);
+        return ! empty($this->children);
     }
 
     /**
@@ -113,7 +113,7 @@ class NavItem implements Arrayable, \IteratorAggregate
 
     public function hasIcon(): bool
     {
-        return !is_null($this->icon);
+        return ! is_null($this->icon);
     }
 
     public function setVisible($state = true): NavItem
