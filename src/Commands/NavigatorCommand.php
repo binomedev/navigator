@@ -1,12 +1,12 @@
 <?php
 
-namespace Spatie\Skeleton\Commands;
+namespace Binomendev\Navigator\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class NavigatorCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'navigator';
 
     public $description = 'My command';
 

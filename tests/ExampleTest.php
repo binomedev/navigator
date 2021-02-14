@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Skeleton\Tests;
+namespace Binomendev\Navigator\Tests;
 
 class ExampleTest extends TestCase
 {
