@@ -1,11 +1,11 @@
 <?php
 
-namespace Binomendev\Navigator;
+namespace Binomedev\Navigator;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Binomendev\Navigator\Navigator
+ * @see \Binomedev\Navigator\Navigator
  */
 class NavigatorFacade extends Facade
 {

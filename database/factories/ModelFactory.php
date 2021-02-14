@@ -1,6 +1,6 @@
 <?php
 
-namespace Binomendev\Navigator\Database\Factories;
+namespace Binomedev\Navigator\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 

@@ -4,7 +4,7 @@ namespace Binomendev\Navigator\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Binomendev\Navigator\NavigatorServiceProvider;
+use Binomedev\Navigator\NavigatorServiceProvider;
 
 class TestCase extends Orchestra
 {

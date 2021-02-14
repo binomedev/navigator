@@ -1,6 +1,6 @@
 <?php
 
-namespace Binomendev\Navigator\Commands;
+namespace Binomedev\Navigator\Commands;
 
 use Illuminate\Console\Command;
 

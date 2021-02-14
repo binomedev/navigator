@@ -1,6 +1,6 @@
 <?php
 
-namespace Binomendev\Navigator\Tests;
+namespace Binomedev\Navigator\Tests;
 
 class ExampleTest extends TestCase
 {

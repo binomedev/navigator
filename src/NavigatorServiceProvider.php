@@ -1,6 +1,6 @@
 <?php
 
-namespace Binomendev\Navigator;
+namespace Binomedev\Navigator;
 
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Spatie\LaravelPackageTools\Package;

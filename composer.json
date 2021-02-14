@@ -1,8 +1,8 @@
 {
-    "name": "binomendev/navigator",
+    "name": "binomedev/navigator",
     "description": "navigator",
     "keywords": [
-        "binomendev",
+        "binomedev",
         "navigator"
     ],
     "homepage": "https://github.com/binomendev/navigator",
@@ -27,13 +27,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Binomendev\\Navigator\\": "src",
-            "Binomendev\\Navigator\\Database\\Factories\\": "database/factories"
+            "Binomedev\\Navigator\\": "src",
+            "Binomedev\\Navigator\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Binomendev\\Navigator\\Tests\\": "tests"
+            "Binomedev\\Navigator\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -47,10 +47,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Binomendev\\Navigator\\NavigatorServiceProvider"
+                "Binomedev\\Navigator\\NavigatorServiceProvider"
             ],
             "aliases": {
-                "Navigator": "Binomendev\\Navigator\\NavigatorFacade"
+                "Navigator": "Binomedev\\Navigator\\NavigatorFacade"
             }
         }
     },
