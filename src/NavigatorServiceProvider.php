@@ -29,9 +29,8 @@ class NavigatorServiceProvider extends PackageServiceProvider implements Deferra
         $this->app->singleton(Navigator::class);
     }
 
-
-    function provides(){
+    public function provides()
+    {
         return [Navigator::class];
     }
-
 }
