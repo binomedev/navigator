@@ -62,6 +62,11 @@ class Navigator
         return $default;
     }
 
+    public function all()
+    {
+        return $this->menus;
+    }
+
     /**
      * @param string $name
      * @return bool

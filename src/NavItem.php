@@ -5,9 +5,10 @@ namespace Binomedev\Navigator;
 
 use Closure;
 use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Traits\Macroable;
 
-class NavItem implements Arrayable
+class NavItem implements Arrayable, \IteratorAggregate
 {
     use Macroable;
 
@@ -20,6 +21,7 @@ class NavItem implements Arrayable
     protected $icon;
     protected $id;
     protected $routeName;
+    protected $options = [];
 
     /**
      * NavItem constructor.
@@ -50,7 +52,7 @@ class NavItem implements Arrayable
     public function hasAnyActiveChild(): bool
     {
         // Check if any child is active
-        if (! $this->hasChildren()) {
+        if (!$this->hasChildren()) {
             return false;
         }
 
@@ -65,7 +67,7 @@ class NavItem implements Arrayable
 
     public function hasChildren(): bool
     {
-        return ! empty($this->children);
+        return !empty($this->children);
     }
 
     /**
@@ -80,10 +82,16 @@ class NavItem implements Arrayable
         return new static(...$args);
     }
 
-    public static function route($name, $route, $params = []): NavItem
+    /**
+     * @param string $label
+     * @param string $name
+     * @param array $params
+     * @return NavItem
+     */
+    public static function route(string $label, string $name, array $params = []): NavItem
     {
-        $instance = new static($name, route($route, $params));
-        $instance->routeName = $route;
+        $instance = new static($label, route($name, $params));
+        $instance->routeName = $name;
 
         return $instance;
     }
@@ -105,7 +113,7 @@ class NavItem implements Arrayable
 
     public function hasIcon(): bool
     {
-        return ! is_null($this->icon);
+        return !is_null($this->icon);
     }
 
     public function setVisible($state = true): NavItem
@@ -135,7 +143,7 @@ class NavItem implements Arrayable
 
         if ($items instanceof Closure) {
             $this->add(
-                (array) $items(request())
+                (array)$items(request())
             );
 
             return $this;
@@ -147,6 +155,38 @@ class NavItem implements Arrayable
         }
 
         return $this;
+    }
+
+    /**
+     * @param array $options
+     * @return $this
+     */
+    public function setOptions(array $options): NavItem
+    {
+        $this->options = array_merge($this->options, $options);
+
+        return $this;
+    }
+
+    public function addOption($name, $value): NavItem
+    {
+        $this->options[$name] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $name
+     * @param mixed|null $default
+     * @return mixed|null
+     */
+    public function option(string $name, $default = null)
+    {
+        if (array_key_exists($name, $this->options)) {
+            return $this->options[$name];
+        }
+
+        return $default;
     }
 
     public function toArray(): array
@@ -195,10 +235,14 @@ class NavItem implements Arrayable
         return value($this->url);
     }
 
-    public function icon($icon = null): ?NavItem
+    /**
+     * @param string|null $icon
+     * @return $this|string|null
+     */
+    public function icon($icon = null)
     {
         if (is_null($icon)) {
-            return $this->icon;
+            return value($this->icon);
         }
 
         $this->icon = $icon;
@@ -229,8 +273,13 @@ class NavItem implements Arrayable
         return $this->isVisible;
     }
 
-    public function children(): array
+    public function children(): Collection
     {
-        return $this->children;
+        return collect($this->children);
+    }
+
+    public function getIterator(): \ArrayIterator
+    {
+        return new \ArrayIterator($this->children);
     }
 }
