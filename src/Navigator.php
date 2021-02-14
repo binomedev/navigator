@@ -2,7 +2,6 @@
 
 namespace Binomedev\Navigator;
 
-
 use Illuminate\Support\Traits\Macroable;
 
 class Navigator
@@ -23,10 +22,12 @@ class Navigator
     {
         if (is_array($item)) {
             $menus[$name] = $item;
+
             return $this;
         }
 
         $menus[$name][] = $item;
+
         return $this;
     }
 
